@@ -1,0 +1,110 @@
+# ===========================
+# Documents
+# ===========================
+AGENTS.md
+doc/
+
+# ===========================
+# Maven
+# ===========================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# ===========================
+# Quarkus
+# ===========================
+.quarkus/
+
+# ===========================
+# IDE - IntelliJ IDEA
+# ===========================
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# ===========================
+# IDE - Eclipse
+# ===========================
+.project
+.classpath
+.settings/
+bin/
+
+# ===========================
+# IDE - VS Code / Cursor
+# ===========================
+.vscode/
+
+# ===========================
+# IDE - NetBeans
+# ===========================
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# ===========================
+# OS Generated Files
+# ===========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ===========================
+# Logs
+# ===========================
+*.log
+logs/
+
+# ===========================
+# Environment / Secrets
+# ===========================
+.env
+.env.local
+.env.*.local
+application-local.properties
+application-local.yaml
+application-local.yml
+
+# ===========================
+# Test Output
+# ===========================
+test-output/
+surefire-reports/
+failsafe-reports/
+
+# ===========================
+# Docker (local overrides)
+# ===========================
+docker-compose.override.yml
+
+# ===========================
+# Native Image
+# ===========================
+*.jnilib
+*.dylib
+*.so
+*.dll
+
+# ===========================
+# Misc
+# ===========================
+*.swp
+*.swo
+*~
+.cache/
