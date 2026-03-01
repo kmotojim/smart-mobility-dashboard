@@ -1,28 +1,19 @@
-# Stage 1: Build
-FROM docker.io/library/maven:3.9-eclipse-temurin-21 AS build
-WORKDIR /app
-
-# Copy pom.xml first for dependency caching
-COPY pom.xml .
-RUN mvn dependency:go-offline -B
-
-# Copy source code and build
-COPY src ./src
-RUN mvn package -DskipTests -B
-
-# Stage 2: Runtime
+# Runtime image only - JAR is pre-built by CI pipeline
 FROM docker.io/library/eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
 # Create non-root user
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-USER appuser
 
-# Copy built artifact
-COPY --from=build /app/target/quarkus-app/lib/ ./lib/
-COPY --from=build /app/target/quarkus-app/*.jar ./
-COPY --from=build /app/target/quarkus-app/app/ ./app/
-COPY --from=build /app/target/quarkus-app/quarkus/ ./quarkus/
+# Copy pre-built artifacts from CI pipeline
+COPY target/quarkus-app/lib/ ./lib/
+COPY target/quarkus-app/*.jar ./
+COPY target/quarkus-app/app/ ./app/
+COPY target/quarkus-app/quarkus/ ./quarkus/
+
+# Set ownership and switch to non-root user
+RUN chown -R appuser:appgroup /app
+USER appuser
 
 # Expose port
 EXPOSE 8081
