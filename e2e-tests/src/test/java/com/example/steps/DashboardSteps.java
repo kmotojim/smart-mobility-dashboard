@@ -24,9 +24,11 @@ public class DashboardSteps {
     @Before
     public void setUp() {
         playwright = Playwright.create();
+        boolean headless = Boolean.parseBoolean(System.getProperty("browser.headless", "true"));
+        long slowMo = Long.parseLong(System.getProperty("browser.slowmo", "0"));
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
-                .setHeadless(true));
-        // ビューポートサイズを大きく設定して、全コントロールが表示されるようにする
+                .setHeadless(headless)
+                .setSlowMo(slowMo));
         context = browser.newContext(new Browser.NewContextOptions()
                 .setViewportSize(1920, 1080));
         page = context.newPage();
